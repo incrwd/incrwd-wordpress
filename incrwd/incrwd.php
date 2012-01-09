@@ -1,25 +1,19 @@
 <?php
 /*
 Plugin Name: Incrwd Engagement Rewards System
-Plugin URI: http://myincrwd.com/
+Plugin URI: http://www.myincrwd.com/
 Description: The Incrwd Engagement Rewards System adds an awesome rewards widget to your site that will measurably improve the metrics you care about the most.
 Author: Incrwd <team@myincrwd.com>
 Version: 3
 Author URI: http://myincrwd.com/
 */
 
-/*.
-    require_module 'standard';
-    require_module 'pcre';
-.*/
-
+require_once(dirname(__FILE__) . '/build.php');
 require_once(dirname(__FILE__) . '/lib/utils.php');
 require_once(dirname(__FILE__) . '/incrwd-embed.php');
 require_once(dirname(__FILE__) . '/lib/wp-api.php');
 
-define('INCRWD_LOCAL', true);
-
-if (defined('INCRWD_LOCAL')) { // Incrwd defines this for local dev
+if (defined('INCRWD_LOCAL') && INCRWD_LOCAL) { // Incrwd defines this for local dev
   define('INCRWD_API_URL', 'http://incrwd.example.com/w/api/');
   define('INCRWD_JS_URL', '');
 } else {
@@ -35,7 +29,7 @@ function incrwd_options() {
 
 function incrwd_output_footer() {
   incrwd_embed(get_option('incrwd_site_id'), 
-               defined('INCRWD_LOCAL'), 
+               defined('INCRWD_LOCAL') && INCRWD_LOCAL, 
                INCRWD_JS_URL, incrwd_sso());
 }
 add_action('wp_footer', 'incrwd_output_footer');
