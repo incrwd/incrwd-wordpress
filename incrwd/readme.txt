@@ -1,4 +1,4 @@
-=== Incrwd Rewards/Loyalty System ===
+=== Incrwd: Loyalty Program for Blogs ===
 Contributors: incrwd, aduston
 Tags: reward, facebook, comments, free, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
@@ -14,7 +14,7 @@ Increase your pageviews, time spent on site, social shares, comments, facebook l
 Incrwd rewards users for: 
 
 1) Registering to your wordrpess blog (or registering through facebook). 
-2) Visiting the site on a weekly basis
+2) Visiting the site on frequent basis. (at least two times a week). 
 2) Sharing articles and posts onto Facebook and Twitter
 3) Commenting on articles. 
 4) Liking your Facebook Page
