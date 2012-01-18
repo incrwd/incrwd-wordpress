@@ -10,7 +10,7 @@ function incrwd_embed($site_id, $incrwd_local, $compiled_js_url, $sso) {
 <?php if ($incrwd_local) {
       echo '<script type="text/javascript" src="http://incrwd.example.com:8000/w/bootloader.js"></script>';
   }
-  else {
+  elseif ($site_id) {
     echo '<script type="text/javascript" src="' . $compiled_js_url . '"></script>';
   }
 }
