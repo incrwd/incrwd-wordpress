@@ -1,6 +1,6 @@
 === Incrwd: Loyalty Program for Blogs ===
 Contributors: incrwd, aduston
-Tags: reward, facebook, comments, free, plugin, loyalty, widget, sidebar, twitter
+Tags: reward, gamification, game mechanics, facebook, comments, free, giveaway, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
 Tested up to: 1.0.2
 Stable tag: 1.0.2
