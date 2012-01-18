@@ -2,8 +2,8 @@
 Contributors: incrwd, aduston
 Tags: reward, facebook, comments, free, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
-Tested up to: 1.0.1
-Stable tag: 1.0.1
+Tested up to: 1.0.2
+Stable tag: 1.0.2
 
 Incrwd is a powerful yet incredibly simple loyalty program for blogs that helps increase pageviews, visits, shares, and comemnts. 
 
@@ -22,6 +22,7 @@ Incrwd rewards users for:
 * Liking your Facebook Page
 
 You can:
+
 * Set your own personalized rewards (or use our own)
 * See in-depth analytics of how our widget is affecting user behavior. 
 * Learn who your most loyal users are
@@ -33,6 +34,10 @@ You can:
 1. Activate the plugin through the "Plugins" menu in WordPress.
 1. Visit your Incrwd options (Plugins > Manage Incrwd).
 1. Paste the site id and secret key you received from http://www.myincrwd.com.
+
+== Frequentyly Asked Questions ==
+
+We don't have a formal FAQ yet, but please check out **[our site](http://www.myincrwd.com)**.
 
 == Screenshots ==
 
