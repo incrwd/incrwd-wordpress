@@ -37,6 +37,9 @@ class IncrwdWordPressAPI {
    *   An associative array of arguments to be passed.
    */
   function call($method, $args=array()) {
+    if (!($this->site_id)) {
+      return -1;
+    }
     $url = $this->api_url . $method . '/';
     $args['api_version'] = $this->api_version;
     $real_args = array(
