@@ -33,7 +33,7 @@ You can:
 1. You can either use the automatic plugin installer or your FTP program to upload plugin files to your wp-content/plugins/incrwd directory. Make sure the source files reside in this directory.
 1. Activate the plugin through the "Plugins" menu in WordPress.
 1. Visit your Incrwd options (Plugins > Manage Incrwd).
-1. Paste the site id and secret key you received from http://www.myincrwd.com.
+1. Paste the site id and secret key you received after signing up through http://www.myincrwd.com.
 
 == Frequentyly Asked Questions ==
 
@@ -43,5 +43,5 @@ We don't have a formal FAQ yet, but please check out **[our site](http://www.myi
 
 1. The Incrwd widget tab in retracted state (it's on the right edge).
 2. Expanded state, which results from clicking on the tab.
-3. Popup-style encouragement as users create rewarded activities.
-4. Close-up of popup.
+3. Real-time congratulatory message encouraging users to interact with site.
+4. Close-up of real-time congratulatory message. 
