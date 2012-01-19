@@ -20,7 +20,6 @@ if (defined('INCRWD_LOCAL') && INCRWD_LOCAL) { // Incrwd defines this for local 
   define('INCRWD_API_URL', 'http://widget.myincrwd.com/w/api/');
   define('INCRWD_JS_URL', 'http://static.widget.myincrwd.com/incrwd.js');
 }
-define('INCRWD_VERSION', '3');
 
 function incrwd_options() {
   return array('incrwd_site_id',
@@ -28,6 +27,7 @@ function incrwd_options() {
 }
 
 function incrwd_output_footer() {
+  
   incrwd_embed(get_option('incrwd_site_id'), 
                defined('INCRWD_LOCAL') && INCRWD_LOCAL, 
                INCRWD_JS_URL, incrwd_sso());
