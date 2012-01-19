@@ -12,10 +12,14 @@ require_once(dirname(__FILE__) . '/build.php');
 require_once(dirname(__FILE__) . '/lib/utils.php');
 require_once(dirname(__FILE__) . '/incrwd-embed.php');
 require_once(dirname(__FILE__) . '/lib/wp-api.php');
+require_once(dirname(__FILE__) . '/lib/basic-info-api.php');
 
 if (defined('INCRWD_LOCAL') && INCRWD_LOCAL) { // Incrwd defines this for local dev
   define('INCRWD_API_URL', 'http://incrwd.example.com/w/api/');
   define('INCRWD_JS_URL', '');
+  define('WP_DEBUG', true);
+  define('WP_DEBUG_DISPLAY', false);
+  define('WP_DEBUG_LOG', true);
 } else {
   define('INCRWD_API_URL', 'http://widget.myincrwd.com/w/api/');
   define('INCRWD_JS_URL', 'http://static.widget.myincrwd.com/incrwd.js');
@@ -27,7 +31,10 @@ function incrwd_options() {
 }
 
 function incrwd_output_footer() {
-  
+  if (!get_option('incrwd_site_id')) {
+    $api = new BasicInfoAPI(INCRWD_API_URL);
+    $api->set_basic_info();
+  }
   incrwd_embed(get_option('incrwd_site_id'), 
                defined('INCRWD_LOCAL') && INCRWD_LOCAL, 
                INCRWD_JS_URL, incrwd_sso());
