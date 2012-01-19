@@ -30,10 +30,12 @@ You can:
 
 == Installation ==
 
-1. You can either use the automatic plugin installer or your FTP program to upload plugin files to your wp-content/plugins/incrwd directory. Make sure the source files reside in this directory.
-1. Activate the plugin through the "Plugins" menu in WordPress.
-1. Visit your Incrwd options (Plugins > Manage Incrwd).
-1. Paste the site id and secret key you received after signing up through http://www.myincrwd.com.
+1. First sign up through http://www.myincrwd.com
+2. Once you have setup your widget configuration, the site will route you back to Wordpress.org to install this plugin. Make sure to save the secret key and site id you received.
+3. Activate the plugin through the "Plugins" menu in WordPress.
+4. Visit your Incrwd options (Plugins > Manage Incrwd).
+5. Paste the site id and secret key you received during widget configuration.
+6. Voila! Start engaging your users.
 
 == Frequentyly Asked Questions ==
 
