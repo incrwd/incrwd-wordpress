@@ -61,9 +61,8 @@ def _get_svn_password():
 def _readme_string(version_array):
     return '.'.join(str(v) for v in version_array)
 
-def _copy_to_svn_dst(src, dst):
+def _copy_to_svn_dst(src, dst, added_files):
     names = os.listdir(src)
-    added_files = []
     if not os.path.exists(dst):
         os.makedirs(dst)
     for name in names:
@@ -72,19 +71,19 @@ def _copy_to_svn_dst(src, dst):
         srcname = os.path.join(src, name)
         dstname = os.path.join(dst, name)
         if os.path.isdir(srcname):
-            _copy_to_svn_dst(srcname, dstname)
+            _copy_to_svn_dst(srcname, dstname, added_files)
         else:
             preexisting = os.path.exists(dstname)
             shutil.copy2(srcname, dstname)
             if not preexisting:
                 added_files.append(dstname)
-    return added_files
 
 def _update_svn(svn_dir):
     svn_password = _get_svn_password()
     svn_rel = lambda *x: os.path.join(svn_dir, *x)
     version = _readme_string(_readme_version(_rel('incrwd/readme.txt')))
-    added_files = _copy_to_svn_dst(_rel('incrwd'), svn_rel('trunk'))
+    added_files = []
+    _copy_to_svn_dst(_rel('incrwd'), svn_rel('trunk'), added_files)
     for file in added_files:
         _run(['svn', 'add', file], cwd=svn_dir)
     _run(['svn', 'cp', svn_rel('trunk'), svn_rel('tags', version)], 
