@@ -34,7 +34,7 @@ You can:
 
 1. You can either use the automatic plugin installer or your FTP program to upload plugin files to your wp-content/plugins/incrwd directory. Make sure the source files reside in this directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. To configure your widget and rewards got to www.myincrwd.com
+3. OPTIONAL: To configure your widget and rewards, go to www.myincrwd.com
 
 
 == Frequentyly Asked Questions ==
