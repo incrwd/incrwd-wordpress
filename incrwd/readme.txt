@@ -3,7 +3,7 @@ Contributors: incrwd, aduston
 Tags: reward, gamification, game mechanics, facebook, comments, free, giveaway, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
 Tested up to: 1.0.2
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 
 Incrwd is a powerful yet incredibly simple loyalty program for blogs that helps increase pageviews, visits, shares, and comments. 
 
@@ -36,10 +36,36 @@ You can:
 2. Activate the plugin through the "Plugins" menu in WordPress.
 3. OPTIONAL: To configure your widget and rewards, go to www.myincrwd.com
 
-
 == Frequentyly Asked Questions ==
 
-We don't have a formal FAQ yet, but please check out **[our site](http://www.myincrwd.com)**.
+= Users are not getting points for commenting on my blog! What's going on? =
+
+We currently only support the following commenting sections: 
+
+-Native Wordpress Commenting system
+-Facebook Comments
+
+We are working hard to bring support to LiveFyre and Disqus. Stay posted! 
+
+= Users are not getting points for sharing on my blog!What's going on? =
+
+We are working hard to support as many sharing options as possible. Currently, we support the following Share buttons and their versions.
+
+-Facebook Like (We support the XFBML and HTML5 versions. We currently do NOT support the iFrame Facebook Like Button).
+               -To Quickly install an XFBML or HTML5 version of the FB Like button please follow **[this link](http://bit.ly/yfDwGM)** and: 
+                            1) Enter your URL, 
+                            2) Select "Get Code" button at the bottom.
+                            3) At the top of the pop up that appears, you can select either XFBML of HTML5.
+                            4) Coppy and paste the code provided in your header.php, single.php, and main.php pages
+-Facebook Send button (We support the XFBML version)
+-Twitter Button (We supoort all versions except the iFrame version)
+-Google Plus button
+
+For a complete sharing solution we recommend that you install **[AddThis](http://www.addthis.com)** as your sharing solution. 
+
+= How do I configure my widget? =
+
+Please visit **[our website](http://www.myincrwd.com)** and sign up to configure your widget. 
 
 == Screenshots ==
 
