@@ -36,7 +36,7 @@ You can:
 2. Activate the plugin through the "Plugins" menu in WordPress.
 3. OPTIONAL: To configure your widget and rewards, go to www.myincrwd.com
 
-== Frequentyly Asked Questions ==
+== Frequently Asked Questions ==
 
 = Users are not getting points for commenting on my blog! What's going on? =
 
