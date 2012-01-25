@@ -3,7 +3,7 @@ Contributors: incrwd, aduston
 Tags: reward, gamification, game mechanics, facebook, comments, free, giveaway, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
 Tested up to: 1.0.2
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 
 Incrwd is a powerful yet incredibly simple loyalty program for blogs that helps increase pageviews, visits, shares, and comments. 
 
@@ -42,8 +42,8 @@ You can:
 
 We currently only support the following commenting sections: 
 
--Native Wordpress Commenting system
--Facebook Comments
+* Native Wordpress Commenting system
+* Facebook Comments
 
 We are working hard to bring support to LiveFyre and Disqus. Stay posted! 
 
@@ -51,17 +51,19 @@ We are working hard to bring support to LiveFyre and Disqus. Stay posted!
 
 We are working hard to support as many sharing options as possible. Currently, we support the following Share buttons and their versions.
 
-* Facebook Like (We support the XFBML and HTML5 versions. We currently do NOT support the iFrame Facebook Like Button).
-* To Quickly install an XFBML or HTML5 version of the FB Like button please follow **[this link](http://bit.ly/yfDwGM)** and: 
-                            1. Enter your URL, 
-                            1. Select "Get Code" button at the bottom.
-                            1. At the top of the pop up that appears, you can select either XFBML of HTML5.
-                            1. Coppy and paste the code provided in your header.php, single.php, and main.php pages
+* Facebook Like (**We support the XFBML and HTML5 versions**. We currently do NOT support the iFrame Facebook Like Button. See below for installation instructions).
 * Facebook Send button (We support the XFBML version)
 * Twitter Button (We supoort all versions except the iFrame version)
 * Google Plus button
 
 For a complete sharing solution we recommend that you install **[AddThis](http://www.addthis.com)** as your sharing solution. 
+
+To Quickly install an XFBML or HTML5 version of the FB Like button please follow **[this link](http://bit.ly/yfDwGM)** and:
+
+1. Enter your URL, 
+1. Select "Get Code" button at the bottom.
+1. At the top of the pop up that appears, you can select either XFBML of HTML5.
+1. Coppy and paste the code provided in your header.php, single.php, and main.php pages
 
 = How do I configure my widget? =
 
