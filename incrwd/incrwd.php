@@ -56,7 +56,7 @@ function incrwd_add_pages() {
     'incrwd_manage');
 }
 
-add_action('admin_menu', 'incrwd_add_pages', 10);
+// add_action('admin_menu', 'incrwd_add_pages', 10);
 
 function incrwd_get_api() {
   return new IncrwdWordPressAPI(
