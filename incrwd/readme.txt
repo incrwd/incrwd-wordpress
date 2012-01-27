@@ -3,7 +3,7 @@ Contributors: incrwd, aduston
 Tags: reward, gamification, game mechanics, facebook, comments, free, giveaway, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
 Tested up to: 1.0.2
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 
 Incrwd is a powerful yet incredibly simple loyalty program for blogs that helps increase pageviews, visits, shares, and comments. 
 
@@ -18,8 +18,9 @@ Increase your pageviews, time spent on site, social shares, comments, facebook l
 Incrwd rewards users for: 
 
 * Registering to your wordrpess blog (or registering through facebook).
-* Visiting the site on frequent basis. (at least two times a week). 
-* Sharing articles and posts onto Facebook and Twitter
+* Visiting the site on frequent basis. 
+* Sharing on Facebook
+* Sharing on Twitter
 * Commenting on articles. 
 * Liking your Facebook Page
 
