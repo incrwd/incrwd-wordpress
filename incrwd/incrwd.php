@@ -38,12 +38,28 @@ function incrwd_output_footer() {
   incrwd_embed(get_option('incrwd_site_id'), 
                defined('INCRWD_LOCAL') && INCRWD_LOCAL, 
                INCRWD_JS_URL, incrwd_sso());
+
+  if (get_option('activate_share_widget')) {
+    echo '<div id="fb-root"></div><script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, "script", "facebook-jssdk"));</script>';
+    echo '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+    echo '<script type="text/javascript" src="https://apis.google.com/js/plusone.js" > {parsetags: "explicit"} </script>';
+  }
 }
-add_action('wp_footer', 'incrwd_output_footer');
+
 
 function incrwd_manage() {
   // TODO: in future, check for needs update here.
   include_once(dirname(__FILE__) . '/manage.php');
+}
+
+function sharewidget_manage() {
+  include_once(dirname(__FILE__) . '/manage-share.php');
 }
 
 function incrwd_add_pages() {
@@ -56,7 +72,73 @@ function incrwd_add_pages() {
     'incrwd_manage');
 }
 
-// add_action('admin_menu', 'incrwd_add_pages', 10);
+//add_action('admin_menu', 'incrwd_add_pages', 10);
+
+////////////////////////////////////////////////////////////
+
+function incrwd_activate_sharewidget() {
+  add_submenu_page(
+    'plugins.php',
+    'Manage Incrwd',
+    'Manage Incrwd',
+    'activate_plugins',
+    'incrwd',
+    'sharewidget_manage');
+}
+
+
+function incrwd_make_share_widget() {
+  global $post;
+  
+  $widget = '<html xmlns:fb="http://ogp.me/ns/fb#"><fb:like href="<?php echo the_permalink($post->ID); ?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like>';
+  $widget .= '<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo the_permalink($post->ID); ?>">Tweet</a>';
+  $widget .= '<g:plusone size="medium" href="<?php the_permalink($post->ID); ?>"></g:plusone>';
+  
+  return $widget;
+}
+
+function is_content() {
+  return !is_page() && !is_feed();
+}
+
+function incrwd_add_share_widget_excerpt($content) {
+  if (is_content() && get_option('add_share_widget_excerpt') == 'true') {
+    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+  }
+  return $content;
+}
+
+function incrwd_add_share_widget_content($content) {
+  if (is_content() && get_option('add_share_widget_content') == 'true') {
+    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+  }
+  return $content;
+}
+
+function incrwd_remove_widget($content) {
+	remove_action('the_content', 'incrwd_add_share_widget_content');
+	return $content;
+}
+
+function incrwd_add_script() {
+    echo '<script type="text/javascript" src="https://apis.google.com/js/plusone.js" > {parsetags: "explicit"} </script>';
+}
+
+if (get_option('add_share_widget_content') != 'false' || get_option('add_share_widget_excerpt') != 'false') {
+    add_filter('wp_head', 'incrwd_add_script');
+    if (get_option('add_share_widget_content') != 'false') {
+      update_option('add_share_widget_content', 'true');
+      add_filter('the_content', 'incrwd_add_share_widget_content');
+    }
+    if (get_option('add_share_widget_excerpt') != 'false') {
+      update_option('add_share_widget_excerpt', 'true');
+      //add_filter('get_the_excerpt', 'incrwd_remove_widget', 9);
+      add_filter('the_excerpt', 'incrwd_add_share_widget_excerpt');
+    }
+}
+
+/////////////////////////////////////////////////////////////
+
 
 function incrwd_get_api() {
   return new IncrwdWordPressAPI(
@@ -76,8 +158,6 @@ function incrwd_comment_approved($comment) {
   incrwd_get_api()->approved_comment_left($comment_id);
 }
 
-add_action('comment_post', 'incrwd_new_comment', 10, 2);
-add_action('comment_unapproved_to_approved', 'incrwd_comment_approved');
 
 /**
  * Encodes an associative array using hmac/time method.
@@ -119,3 +199,8 @@ function incrwd_sso() {
   }
   return encode_arr($user_data);
 }
+
+add_action('wp_footer', 'incrwd_output_footer');
+add_action('admin_menu', 'incrwd_activate_sharewidget', 10);
+add_action('comment_post', 'incrwd_new_comment', 10, 2);
+add_action('comment_unapproved_to_approved', 'incrwd_comment_approved');
