@@ -2,7 +2,7 @@
 Contributors: incrwd, aduston
 Tags: reward, gamification, game mechanics, facebook, comments, free, giveaway, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
-Tested up to: 1.0.2
+Tested up to: 1.0.3
 Stable tag: 1.2.0.0
 
 Incrwd is a powerful yet incredibly simple loyalty program for blogs that helps increase pageviews, visits, shares, and comments. 
@@ -35,7 +35,7 @@ You can:
 
 1. You can either use the automatic plugin installer or your FTP program to upload plugin files to your wp-content/plugins/incrwd directory. Make sure the source files reside in this directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. OPTIONAL: To configure your widget and rewards, go to www.myincrwd.com
+3. To check your program's analytics, go to http://www.myincrwd.com/signup/analytics_dashboard/
 
 == Frequently Asked Questions ==
 
@@ -68,7 +68,7 @@ To Quickly install an XFBML or HTML5 version of the FB Like button please follow
 
 = How do I configure my widget? =
 
-Please visit **[our website](http://www.myincrwd.com)** and sign up to configure your widget. 
+This function is currently unavailable. If you would like to configure your widget please email us at support@myincrwd.com. 
 
 == Screenshots ==
 
