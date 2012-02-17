@@ -38,8 +38,18 @@ function incrwd_output_footer() {
   incrwd_embed(get_option('incrwd_site_id'), 
                defined('INCRWD_LOCAL') && INCRWD_LOCAL, 
                INCRWD_JS_URL, incrwd_sso());
+
+  if (incrwd_showing_share_widget()) {
+    echo '<div id="fb-root"></div><script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, "script", "facebook-jssdk"));</script>';
+    echo '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+  }
 }
-add_action('wp_footer', 'incrwd_output_footer');
 
 function incrwd_manage() {
   // TODO: in future, check for needs update here.
@@ -56,7 +66,71 @@ function incrwd_add_pages() {
     'incrwd_manage');
 }
 
-// add_action('admin_menu', 'incrwd_add_pages', 10);
+add_action('admin_menu', 'incrwd_add_pages', 10);
+
+function incrwd_make_share_widget() {
+  global $post;
+
+  $widget = '<br/><div class="incrwd_share_widget"><div id="fb_sw" style="float:left;"><html xmlns:fb="http://ogp.me/ns/fb#"><fb:like href="' . get_permalink($post->ID) . '" send="false" layout="button_count" width="100" show_faces="false"></fb:like></div>';
+  $widget .= '<div id="tw_sw" style="float:left;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="' . get_permalink($post->ID) . '">Tweet</a></div>';
+  $widget .= ('<div id="gp_sw" style="float:left;"><g:plusone size="medium" href="' . get_permalink($post->ID) . '"></g:plusone></div></div><div style="clear:both;"></div>');
+  
+  return $widget;
+}
+
+function is_content() {
+  return !is_page() && !is_feed();
+}
+
+function incrwd_add_share_widget_excerpt($content) {
+  if (is_content() && get_option('add_share_widget_excerpt') == 'true') {
+    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+  }
+  return $content;
+}
+
+function incrwd_add_share_widget_content($content) {
+  if (is_content() && get_option('add_share_widget_content') == 'true') {
+    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+  }
+  return $content;
+}
+
+function incrwd_add_share_widget_content_top($content) {
+  if (!is_home() && is_content() && get_option('add_share_widget_content_top') == 'true') {
+    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+  }
+  return $content;
+}
+
+function incrwd_remove_widget($content) {
+	remove_action('the_content', 'incrwd_add_share_widget_content');
+	return $content;
+}
+
+function incrwd_add_header_script() {
+    echo '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"> {parsetags: "explicit"} </script>';
+}
+
+function incrwd_showing_share_widget() {
+  return get_option('add_share_widget_content') == 'true' ||
+    get_option('add_share_widget_excerpt') == 'true' ||
+    get_option('add_share_widget_content_top') == 'true';
+}
+
+if (incrwd_showing_share_widget()) {
+    add_filter('wp_head', 'incrwd_add_header_script');
+    if (get_option('add_share_widget_content') == 'true') {
+      add_filter('the_content', 'incrwd_add_share_widget_content');
+    }
+    if (get_option('add_share_widget_content_top') == 'true') {
+      add_filter('the_title', 'incrwd_add_share_widget_content_top');
+    }
+    if (get_option('add_share_widget_excerpt') == 'true') {
+      add_filter('the_excerpt', 'incrwd_add_share_widget_excerpt');
+    }
+}
+
 
 function incrwd_get_api() {
   return new IncrwdWordPressAPI(
@@ -76,8 +150,6 @@ function incrwd_comment_approved($comment) {
   incrwd_get_api()->approved_comment_left($comment_id);
 }
 
-add_action('comment_post', 'incrwd_new_comment', 10, 2);
-add_action('comment_unapproved_to_approved', 'incrwd_comment_approved');
 
 /**
  * Encodes an associative array using hmac/time method.
@@ -119,3 +191,8 @@ function incrwd_sso() {
   }
   return encode_arr($user_data);
 }
+
+add_action('wp_footer', 'incrwd_output_footer');
+add_action('admin_menu', 'incrwd_activate_sharewidget', 10);
+add_action('comment_post', 'incrwd_new_comment', 10, 2);
+add_action('comment_unapproved_to_approved', 'incrwd_comment_approved');
