@@ -6,6 +6,10 @@ $in_excerpt = get_option('add_share_widget_excerpt') == TRUE_STRING;
 $in_content = get_option('add_share_widget_content') == TRUE_STRING;
 $in_content_top = get_option('add_share_widget_content_top') == TRUE_STRING;
 ?>
+<div id="incrwd-dashboard">
+   <h2>Incrwd Dashboard</h2>
+   <p>Sign in to your <a href="http://www.myincrwd.com/signup/login/?next=/signup/analytics_dashboard/">Dashboard</a> to see analytics and customize your rewards…for free!</p>
+</div>
 <div id="incrwd-options" class="incrwd-settings">
    <h2>Incrwd Settings</h2>
    <?php
