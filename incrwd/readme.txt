@@ -3,7 +3,7 @@ Contributors: incrwd, aduston
 Tags: engagement, reward, gamification, game mechanics, facebook, comments, free, giveaway, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
 Tested up to: 1.0.2
-Stable tag: 1.2.1.1
+Stable tag: 1.2.1.2
 
 Incrwd is a powerful yet incredibly simple engagement program for blogs that helps increase pageviews, visits, shares, and comments. 
 
@@ -21,6 +21,7 @@ Incrwd rewards users for:
 * Visiting the site on frequent basis. 
 * Sharing on Facebook
 * Sharing on Twitter
+* Sharing on Google Plus
 * Commenting on articles. 
 * Liking your Facebook Page
 
@@ -43,17 +44,16 @@ You can:
 
 We currently only support the following commenting sections: 
 
-* Native Wordpress Commenting system
-* Facebook Comments
+* Native Wordpress commenting system
+* Facebook comments
 
 We are working hard to bring support to LiveFyre and Disqus. Stay posted! 
 
-= Users are not getting points for sharing on my blog!What's going on? =
+= Users are not getting points for sharing on my blog! What's going on? =
 
 We are working hard to support as many sharing options as possible. Currently, we support the following Share buttons and their versions.
 
 * Facebook Like (**We support the XFBML and HTML5 versions**. We currently do NOT support the iFrame Facebook Like Button. See below for installation instructions).
-* Facebook Send button (We support the XFBML version)
 * Twitter Button (We supoort all versions except the iFrame version)
 * Google Plus button
 
@@ -62,9 +62,16 @@ For a complete sharing solution we recommend that you install the default versio
 To Quickly install an XFBML or HTML5 version of the FB Like button please follow **[this link](http://bit.ly/yfDwGM)** and:
 
 1. Enter your URL, 
-1. Select "Get Code" button at the bottom.
-1. At the top of the pop up that appears, you can select either XFBML of HTML5.
-1. Coppy and paste the code provided in your header.php, single.php, and main.php pages
+2. Select "Get Code" button at the bottom.
+3. At the top of the pop up that appears, you can select either XFBML of HTML5.
+4. Copy and paste the code provided in your header.php, single.php, and main.php pages
+
+= How do I Activate the Incrwd Share Widget =
+
+1. In the Wordpress Dashboard, click on the Settings tab.
+2. Under settings, click Incrwd Setup.
+3. Choose locations on Blog where you would like the Share Widget to appear.
+
 
 = How do I configure my widget? =
 

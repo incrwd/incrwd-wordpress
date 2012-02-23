@@ -56,17 +56,17 @@ function incrwd_manage() {
   include_once(dirname(__FILE__) . '/manage.php');
 }
 
-function incrwd_add_pages() {
+function incrwd_add_settings() {
   add_submenu_page(
-    'plugins.php',
-    'Manage Incrwd',
-    'Manage Incrwd',
+    'options-general.php',
+    'Incrwd Setup',
+    'Incrwd Setup',
     'activate_plugins',
     'incrwd',
     'incrwd_manage');
 }
 
-add_action('admin_menu', 'incrwd_add_pages', 10);
+add_action('admin_menu', 'incrwd_add_settings', 10);
 
 function incrwd_make_share_widget() {
   global $post;
@@ -193,6 +193,5 @@ function incrwd_sso() {
 }
 
 add_action('wp_footer', 'incrwd_output_footer');
-add_action('admin_menu', 'incrwd_activate_sharewidget', 10);
 add_action('comment_post', 'incrwd_new_comment', 10, 2);
 add_action('comment_unapproved_to_approved', 'incrwd_comment_approved');
