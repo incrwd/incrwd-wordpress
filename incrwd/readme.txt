@@ -3,7 +3,7 @@ Contributors: incrwd, aduston
 Tags: engagement, reward, gamification, game mechanics, facebook, comments, free, giveaway, plugin, loyalty, widget, sidebar, twitter
 Requires at least: 3.0
 Tested up to: 1.0.2
-Stable tag: 1.2.1.2
+Stable tag: 1.2.1.3
 
 Incrwd is a powerful yet incredibly simple engagement program for blogs that helps increase pageviews, visits, shares, and comments. 
 
