@@ -48,6 +48,7 @@ function incrwd_output_footer() {
       fjs.parentNode.insertBefore(js, fjs);
       }(document, "script", "facebook-jssdk"));</script>';
     echo '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+    echo '<script type="text/javascript" src="http://static.widget.myincrwd.com/pinterest/init.js"></script>';
   }
 }
 
@@ -71,11 +72,36 @@ add_action('admin_menu', 'incrwd_add_settings', 10);
 function incrwd_make_share_widget() {
   global $post;
 
-  $widget = '<br/><div class="incrwd_share_widget"><div id="fb_sw" style="float:left;"><html xmlns:fb="http://ogp.me/ns/fb#"><fb:like href="' . get_permalink($post->ID) . '" send="false" layout="button_count" width="100" show_faces="false"></fb:like></div>';
+  $widget = '<div class="incrwd_share_widget"><div id="fb_sw" style="float:left;"><html xmlns:fb="http://ogp.me/ns/fb#"><fb:like href="' . get_permalink($post->ID) . '" send="false" layout="button_count" width="100" show_faces="false"></fb:like></div>';
   $widget .= '<div id="tw_sw" style="float:left;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="' . get_permalink($post->ID) . '">Tweet</a></div>';
-  $widget .= ('<div id="gp_sw" style="float:left;"><g:plusone size="medium" href="' . get_permalink($post->ID) . '"></g:plusone></div></div><div style="clear:both;"></div>');
+  $widget .= ('<div id="gp_sw" style="float:left;"><g:plusone size="medium" href="' . get_permalink($post->ID) . '"></g:plusone></div></div>');
   
   return $widget;
+}
+
+function incrwd_make_pinterest() {
+  global $post;
+
+  $title = $post->post_title;
+  if (current_theme_supports('post-thumbnails')) {
+    $thumb = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'thumbnail');
+  } else {
+    $thumb = false;
+  }
+  $image = $thumb ? $thumb[0] : '';
+
+  $pinit = '<div id="pi_sw" style="float:left;"><a href="http://pinterest.com/pin/create/button/?url=';
+  $pinit .= urlencode(get_permalink()) . '&media=' . urlencode($thumb);
+  $pinit .= '&description=' . urlencode($title);
+  $pinit .= '" class="pin-it-button" count-layout="horizontal">';
+  $pinit .= 'Pin It</a></div>';
+
+  return $pinit;
+}
+
+function div_clear() {
+  $clear = '<div style="clear:both;"></div>';
+  return $clear;
 }
 
 function is_content() {
@@ -84,21 +110,21 @@ function is_content() {
 
 function incrwd_add_share_widget_excerpt($content) {
   if (is_content() && get_option('add_share_widget_excerpt') == 'true') {
-    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+    return $content.incrwd_make_share_widget().div_clear();
   }
   return $content;
 }
 
 function incrwd_add_share_widget_content($content) {
   if (is_content() && get_option('add_share_widget_content') == 'true') {
-    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+    return $content.incrwd_make_share_widget().incrwd_make_pinterest().div_clear();
   }
   return $content;
 }
 
 function incrwd_add_share_widget_content_top($content) {
   if (!is_home() && is_content() && get_option('add_share_widget_content_top') == 'true') {
-    return $content.'<p>'.incrwd_make_share_widget().'</p><br/>';
+    return $content.incrwd_make_share_widget().div_clear();
   }
   return $content;
 }
