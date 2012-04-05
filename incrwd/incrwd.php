@@ -91,7 +91,7 @@ function incrwd_make_pinterest() {
   $image = $thumb ? $thumb[0] : '';
 
   $pinit = '<div id="pi_sw" style="float:left;"><a href="http://pinterest.com/pin/create/button/?url=';
-  $pinit .= urlencode(get_permalink()) . '&media=' . urlencode($thumb);
+  $pinit .= urlencode(get_permalink()) . '&media=' . urlencode($image);
   $pinit .= '&description=' . urlencode($title);
   $pinit .= '" class="pin-it-button" count-layout="horizontal">';
   $pinit .= 'Pin It</a></div>';
